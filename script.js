@@ -12,14 +12,48 @@ let musicStarted = false;
 const defaultMusicVolume = 0.08;
 let revealObserver = null;
 let mutedByInactivity = false;
+let audioCtx = null;
+let musicSource = null;
+let gainNode = null;
+let currentVolume = defaultMusicVolume;
+
+const applyMusicState = (volume = currentVolume) => {
+  currentVolume = volume;
+
+  if (gainNode) {
+    gainNode.gain.value = muted || mutedByInactivity ? 0 : volume;
+    return;
+  }
+
+  music.volume = muted || mutedByInactivity ? 0 : volume;
+};
+
+const setupAudioGain = async () => {
+  if (!music || gainNode) return;
+
+  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContextClass) return;
+
+  audioCtx = new AudioContextClass();
+  musicSource = audioCtx.createMediaElementSource(music);
+  gainNode = audioCtx.createGain();
+
+  musicSource.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
+
+  if (audioCtx.state === "suspended") {
+    await audioCtx.resume();
+  }
+};
 
 const startMusic = async () => {
   if (!music || musicStarted) return;
 
   musicStarted = true;
-  music.volume = defaultMusicVolume;
 
   try {
+    await setupAudioGain();
+    applyMusicState(defaultMusicVolume);
     await music.play();
   } catch (error) {
     musicStarted = false;
@@ -108,7 +142,7 @@ if (musicToggle && music && musicIcon) {
     }
 
     muted = !muted;
-    music.muted = muted;
+    applyMusicState();
     musicIcon.src = muted ? "music-off.svg" : "music-on.svg";
   });
 }
@@ -118,14 +152,14 @@ document.addEventListener("visibilitychange", () => {
 
   if (document.hidden) {
     mutedByInactivity = !muted;
-    music.muted = true;
+    applyMusicState();
     return;
   }
 
   if (!mutedByInactivity) return;
 
   mutedByInactivity = false;
-  music.muted = muted;
+  applyMusicState();
 });
 
 const rsvpForm = document.getElementById("rsvpForm");
