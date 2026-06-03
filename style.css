@@ -334,7 +334,7 @@ input {
 .scroll-cue {
   position: absolute;
   left: 50%;
-  bottom: calc(26 * var(--scale));
+  bottom: max(calc(76 * var(--scale)), 64px);
   z-index: 3;
   transform: translateX(-50%);
   color: rgba(255, 255, 255, 0.96);
@@ -782,6 +782,12 @@ input {
 
   .rsvp-form {
     width: 84%;
+  }
+}
+
+@media (max-height: 700px) {
+  .scroll-cue {
+    bottom: 102px;
   }
 }
 
