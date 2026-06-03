@@ -253,7 +253,6 @@ input {
   height: max(calc(844 * var(--scale)), 100svh);
   height: max(calc(844 * var(--scale)), 100dvh);
   min-height: 690px;
-  max-height: 930px;
   background: #f5ddad;
 }
 
