@@ -9,8 +9,7 @@ const revealSections = Array.from(document.querySelectorAll(".fold, .gift-note")
 
 let muted = false;
 let musicStarted = false;
-const isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
-const defaultMusicVolume = isMobileViewport ? 0.315 : 0.45;
+const defaultMusicVolume = 0.18;
 let revealObserver = null;
 let mutedByInactivity = false;
 

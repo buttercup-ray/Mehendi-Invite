@@ -38,7 +38,8 @@
   --ink: #383837;
   --soft-pink: #ffe1e1;
   --line: #adb4a5;
-  --page-width: min(100vw, 390px);
+  --design-width: 390;
+  --page-width: min(100vw, 430px);
   --scale: calc(var(--page-width) / 390);
   --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
 }
@@ -57,6 +58,7 @@ body {
   min-width: 320px;
   color: var(--ink);
   font-family: var(--sans);
+  overflow-x: clip;
   background:
     radial-gradient(circle at top, rgba(255, 255, 255, 0.7), transparent 36rem),
     #f2eadc;
@@ -111,7 +113,7 @@ input {
 
 .envelope-scene {
   position: relative;
-  width: min(calc(100dvh * 390 / 593), 100vw);
+  width: min(calc(100dvh * var(--design-width) / 593), 100vw);
   height: 100dvh;
   overflow: hidden;
 }
@@ -501,7 +503,9 @@ input {
   padding: calc(33 * var(--scale)) 0 8px;
   flex-direction: column;
   align-items: center;
-  background: #fff;
+  background:
+    url("2nd-fold-bg.png") center center / cover no-repeat,
+    #fff;
 }
 
 .dress-card {
@@ -562,17 +566,42 @@ input {
   justify-content: center;
   width: 100%;
   padding: 14px 18px;
-  background: #fff;
+  background:
+    url("2nd-fold-bg.png") center center / cover no-repeat,
+    #fff;
 }
 
 .gift-note-card {
   position: relative;
-  width: min(100%, 292px);
+  width: min(100%, 322px);
   padding: 24px 18px 20px;
   border-radius: 18px;
-  background: #efe2cf;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 251, 240, 0.72), transparent 28%),
+    radial-gradient(circle at 82% 24%, rgba(214, 179, 128, 0.12), transparent 22%),
+    radial-gradient(circle at 50% 100%, rgba(184, 145, 91, 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(244, 230, 204, 0.98) 0%, rgba(234, 216, 185, 0.98) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 250, 239, 0.88),
+    inset 0 -10px 24px rgba(181, 147, 95, 0.08);
   text-align: center;
   transform: translateY(-24px);
+}
+
+.gift-note-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    repeating-linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0.045) 0 2px,
+      rgba(176, 139, 86, 0.035) 2px 4px,
+      transparent 4px 8px
+    );
+  opacity: 0.4;
+  pointer-events: none;
 }
 
 .gift-flower {
@@ -600,7 +629,7 @@ input {
 .gift-note-copy {
   display: grid;
   gap: 4px;
-  max-width: 220px;
+  max-width: 252px;
   margin: 0 auto 12px;
   color: #3d3d3d;
   font-size: clamp(15px, calc(16 * var(--scale)), 18px);
@@ -641,7 +670,7 @@ input {
   position: absolute;
   left: 50%;
   width: 100%;
-  min-width: 390px;
+  min-width: var(--page-width);
   max-width: none;
   transform: translateX(-50%);
   pointer-events: none;
@@ -667,14 +696,19 @@ input {
   width: 234px;
   margin: 0 auto 8px;
   font-size: 16px;
+  font-weight: 700;
   line-height: 1.22;
 }
 
 .committee-copy strong {
   display: block;
   font-family: "CormorantInfantCustom", serif;
-  font-size: 20px;
+  font-size: 21.5px;
   line-height: 1.12;
+}
+
+.nowrap {
+  white-space: nowrap;
 }
 
 .rsvp-form {
