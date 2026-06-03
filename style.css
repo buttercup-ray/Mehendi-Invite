@@ -250,7 +250,8 @@ input {
 }
 
 .hero-fold {
-  height: calc(844 * var(--scale));
+  height: max(calc(844 * var(--scale)), 100svh);
+  height: max(calc(844 * var(--scale)), 100dvh);
   min-height: 690px;
   max-height: 930px;
   background: #f5ddad;
@@ -287,10 +288,11 @@ input {
 }
 
 .hero-bg {
-  width: calc(476 * var(--scale));
+  width: max(calc(476 * var(--scale)), 100%);
   max-width: none;
   left: 50%;
   transform: translateX(-50%);
+  object-position: center top;
 }
 
 .hero-copy {
