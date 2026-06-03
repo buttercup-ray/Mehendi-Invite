@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zahra's Mehndi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <audio id="bgMusic" loop preload="auto">
+    <source src="bg-music.mp3" type="audio/mpeg">
+  </audio>
+
+  <section class="hero-envelope" id="wrapper" aria-label="Envelope intro">
+    <div class="envelope-scene">
+      <img src="envelope-base.png" class="envelope-base" alt="">
+      <img src="flap-full-width.png" class="envelope-flap" id="flap" alt="">
+    </div>
+
+    <p class="open-note">Click to open</p>
+  </section>
+
+  <button class="music-toggle" id="musicToggle" type="button" aria-label="Toggle music">
+    <img src="music-on.svg" id="musicIcon" alt="">
+  </button>
+
+  <main class="mehndi-site" id="invite">
+    <section class="fold hero-fold" aria-labelledby="event-title">
+      <img class="hero-bg" src="assets/hero-bg.png" alt="">
+
+      <div class="hero-copy">
+        <img class="bismillah-mark" src="Bismillah-.png" alt="">
+        <p class="bismillah-copy">In the name of Allah, the most gracious and the most merciful</p>
+
+        <p class="hosts">Danyal &amp; Haroon</p>
+        <p class="intro">Invite you to join them for a magical evening of henna, music, laughter, and unforgettable memories in honour of their beloved sister</p>
+
+        <h1 class="event-title" id="event-title">
+          <span>Zahra’s</span>
+          <small>Mehndi</small>
+        </h1>
+      </div>
+    </section>
+
+    <section class="fold details-fold" aria-labelledby="details-title">
+      <img class="details-bg" src="assets/details-bg.png" alt="">
+      <img class="mandap-top" src="assets/top-mandap.png" alt="">
+
+      <div class="details-copy">
+        <h2 class="inshaa" id="details-title">Inshaa Allah</h2>
+        <p class="script-on">on</p>
+        <p class="event-date">21st July, 2026</p>
+        <p class="event-time">Program starting at 6pm</p>
+        <p class="venue">
+          <strong>QUAID-E-AZAM GRAND BALLROOM</strong>
+          <span>Montague ST, Birmingham, B4 7XH</span>
+        </p>
+        <a class="map-button" href="https://www.google.com/maps/search/?api=1&query=Quaid-e-Azam+Grand+Ballroom+Montague+St+Birmingham+B4+7XH" target="_blank" rel="noopener noreferrer">
+          Locate on Google Maps
+        </a>
+      </div>
+
+      <img class="mangoes" src="assets/mangoes.png" alt="">
+    </section>
+
+    <section class="fold dress-fold" aria-labelledby="dress-title">
+      <div class="dress-card">
+        <h2 id="dress-title">Dress Code</h2>
+        <p class="dress-subtitle">A few gentle reminders</p>
+        <div class="dress-lines">
+          <p><strong>Ladies:</strong><span>Vibrant Colours</span></p>
+          <p><strong>Gentlemen:</strong><span>Black Kurtas</span></p>
+        </div>
+      </div>
+      <img class="wardrobe" src="wardrobe-img.png" alt="">
+    </section>
+
+    <section class="gift-note" aria-label="Gift note">
+      <div class="gift-note-card">
+        <img class="gift-flower gift-flower-left" src="genda-phool.png" alt="">
+        <img class="gift-flower gift-flower-right" src="genda-phool.png" alt="">
+
+        <p class="gift-note-copy">
+          <span>Your presence and prayers are the only gifts we truly seek.</span>
+          <span>But if you insist,</span>
+        </p>
+
+        <p class="gift-note-highlight">"No boxed gifts please"</p>
+      </div>
+    </section>
+
+    <section class="fold rsvp-fold" aria-labelledby="rsvp-title">
+      <img class="rsvp-bg" src="assets/rsvp-bg.png" alt="">
+      <img class="rsvp-top" src="assets/people-footer.png" alt="">
+
+      <div class="committee-copy">
+        <p>The Cousins Committee looks forward to welcoming you:</p>
+        <strong>Zarlish, Rumaisa, Zaynah, Imaan, Zoha, Rameen, Ayzah, Haya, Imaan &amp; Inaya</strong>
+      </div>
+
+      <form
+        class="rsvp-form"
+        id="rsvpForm"
+        data-sheet-webhook-url="https://script.google.com/macros/s/AKfycbz3qthjGd05OYhIBLMQoe-onlYNtNsKXdyLndIlDLT46vgHHRTbbiu-mssua7rUKBgRlw/exec"
+      >
+        <h2 id="rsvp-title">RSVP here</h2>
+
+        <fieldset class="attendance-options">
+          <legend>Will you attend?</legend>
+
+          <label class="radio-option">
+            <input type="radio" name="attendance" value="yes" required>
+            <span>Yes, I’ll be there</span>
+          </label>
+
+          <label class="radio-option">
+            <input type="radio" name="attendance" value="no" required>
+            <span>Sorry, I can’t make it</span>
+          </label>
+        </fieldset>
+
+        <input type="text" name="name" id="rsvpName" placeholder="Enter your name" required>
+        <input type="number" name="attendees" id="rsvpAttendees" placeholder="No. of Attendees" min="0" step="1" required>
+
+        <button type="submit" class="submit-button" id="rsvpSubmitButton">Send</button>
+        <p class="rsvp-status" id="rsvpStatus" aria-live="polite"></p>
+      </form>
+
+      <p class="thankyou">Thankyou</p>
+      <img class="rsvp-bottom" src="assets/people-footer.png" alt="">
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
