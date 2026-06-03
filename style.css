@@ -356,7 +356,7 @@ input {
 .scroll-hint {
   position: absolute;
   left: 50%;
-  bottom: max(132px, calc(env(safe-area-inset-bottom) + 104px));
+  bottom: max(168px, calc(env(safe-area-inset-bottom) + 136px));
   z-index: 4;
   display: flex;
   flex-direction: column;
@@ -852,7 +852,7 @@ input {
 
 @media (max-height: 700px) {
   .scroll-hint {
-    bottom: max(116px, calc(env(safe-area-inset-bottom) + 92px));
+    bottom: max(148px, calc(env(safe-area-inset-bottom) + 118px));
   }
 }
 
