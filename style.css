@@ -111,6 +111,10 @@ input {
   pointer-events: none;
 }
 
+.hero-envelope.is-gone {
+  display: none;
+}
+
 .envelope-scene {
   position: relative;
   width: min(calc(100dvh * var(--design-width) / 593), 100vw);

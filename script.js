@@ -131,6 +131,10 @@ if (flap && scene && invite && wrapper) {
       document.body.classList.remove("envelope-locked");
       invite.classList.add("show");
     }, 1600);
+
+    window.setTimeout(() => {
+      wrapper.classList.add("is-gone");
+    }, 3100);
   });
 }
 
