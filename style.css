@@ -860,7 +860,7 @@ input {
   }
 
   .scroll-hint {
-    bottom: max(92px, calc(env(safe-area-inset-bottom) + 70px));
+    bottom: max(156px, calc(env(safe-area-inset-bottom) + 128px));
   }
 
   .hero-fold::after {
@@ -870,7 +870,7 @@ input {
 
 @media (max-height: 700px) {
   .scroll-hint {
-    bottom: max(108px, calc(env(safe-area-inset-bottom) + 82px));
+    bottom: max(144px, calc(env(safe-area-inset-bottom) + 116px));
   }
 }
 
