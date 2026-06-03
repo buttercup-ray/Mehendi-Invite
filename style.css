@@ -850,9 +850,23 @@ input {
   }
 }
 
+@media (max-width: 430px) {
+  .hero-copy {
+    top: calc(168 * var(--scale));
+  }
+
+  .scroll-hint {
+    bottom: max(92px, calc(env(safe-area-inset-bottom) + 70px));
+  }
+
+  .hero-fold::after {
+    height: clamp(110px, 18vh, 170px);
+  }
+}
+
 @media (max-height: 700px) {
   .scroll-hint {
-    bottom: max(148px, calc(env(safe-area-inset-bottom) + 118px));
+    bottom: max(108px, calc(env(safe-area-inset-bottom) + 82px));
   }
 }
 

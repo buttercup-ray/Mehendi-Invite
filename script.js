@@ -9,7 +9,7 @@ const revealSections = Array.from(document.querySelectorAll(".fold, .gift-note")
 
 let muted = false;
 let musicStarted = false;
-const defaultMusicVolume = 0.1;
+const defaultMusicVolume = 0.08;
 let revealObserver = null;
 let mutedByInactivity = false;
 
