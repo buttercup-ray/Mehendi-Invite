@@ -137,6 +137,7 @@ input {
 
 .envelope-flap {
   z-index: 3;
+  object-position: center 40%;
   transform-origin: top center;
   backface-visibility: hidden;
   transform-style: preserve-3d;
@@ -212,7 +213,8 @@ input {
   bottom: 2.2rem;
   transform: translateX(-50%);
   z-index: 10;
-  color: rgba(58, 39, 23, 0.82);
+  color: #f6e3a6;
+  text-shadow: 0 1px 10px rgba(58, 39, 23, 0.35);
   font-size: 1.08rem;
   font-weight: 500;
   letter-spacing: 0.18em;
@@ -231,6 +233,20 @@ input {
   position: relative;
   overflow: hidden;
   width: 100%;
+}
+
+.reveal-section {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s ease;
+  will-change: opacity, transform;
+}
+
+.reveal-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .hero-fold {
@@ -313,6 +329,26 @@ input {
 .event-title small {
   display: block;
   font-size: clamp(32px, calc(36 * var(--scale)), 40px);
+}
+
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: calc(26 * var(--scale));
+  z-index: 3;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.96);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(46, 33, 18, 0.4);
+  animation: scrollCueFloat 1.8s ease-in-out infinite;
+}
+
+.scroll-cue span {
+  display: block;
 }
 
 .details-fold {
@@ -765,6 +801,13 @@ input {
   .open-note {
     animation: none;
   }
+
+  .reveal-section,
+  .reveal-section.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 @media (max-width: 768px) {
@@ -806,6 +849,19 @@ input {
 
   50% {
     transform: translate(-50%, -6px);
+    opacity: 1;
+  }
+}
+
+@keyframes scrollCueFloat {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.72;
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(4px);
     opacity: 1;
   }
 }
