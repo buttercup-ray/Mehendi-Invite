@@ -250,10 +250,9 @@ input {
 }
 
 .hero-fold {
-  min-height: 100svh;
-  min-height: 100dvh;
-  height: 100svh;
-  height: 100dvh;
+  height: calc(844 * var(--scale));
+  min-height: 690px;
+  max-height: 930px;
   background: #f5ddad;
 }
 
@@ -819,13 +818,6 @@ input {
 @media (max-height: 700px) {
   .scroll-hint {
     bottom: 118px;
-  }
-}
-
-@media (min-width: 769px) {
-  .hero-fold {
-    min-height: 100dvh;
-    height: 100dvh;
   }
 }
 
