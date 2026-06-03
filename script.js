@@ -12,6 +12,7 @@ let musicStarted = false;
 const isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
 const defaultMusicVolume = isMobileViewport ? 0.315 : 0.45;
 let revealObserver = null;
+let mutedByInactivity = false;
 
 const startMusic = async () => {
   if (!music || musicStarted) return;
@@ -112,6 +113,21 @@ if (musicToggle && music && musicIcon) {
     musicIcon.src = muted ? "music-off.svg" : "music-on.svg";
   });
 }
+
+document.addEventListener("visibilitychange", () => {
+  if (!musicStarted || !music) return;
+
+  if (document.hidden) {
+    mutedByInactivity = !muted;
+    music.muted = true;
+    return;
+  }
+
+  if (!mutedByInactivity) return;
+
+  mutedByInactivity = false;
+  music.muted = muted;
+});
 
 const rsvpForm = document.getElementById("rsvpForm");
 const rsvpStatus = document.getElementById("rsvpStatus");
