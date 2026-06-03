@@ -262,12 +262,13 @@ input {
   right: 0;
   bottom: 0;
   left: 0;
-  height: clamp(76px, 14vh, 130px);
+  height: clamp(128px, 24vh, 220px);
   background: linear-gradient(
     180deg,
     rgba(245, 221, 173, 0) 0%,
-    rgba(245, 221, 173, 0.18) 38%,
-    rgba(242, 234, 220, 0.82) 72%,
+    rgba(245, 221, 173, 0.14) 26%,
+    rgba(242, 234, 220, 0.68) 58%,
+    rgba(242, 234, 220, 0.94) 82%,
     #f2eadc 100%
   );
   z-index: 2;
@@ -353,7 +354,7 @@ input {
 .scroll-hint {
   position: absolute;
   left: 50%;
-  bottom: 146px;
+  bottom: max(132px, calc(env(safe-area-inset-bottom) + 104px));
   z-index: 4;
   display: flex;
   flex-direction: column;
@@ -817,7 +818,7 @@ input {
 
 @media (max-height: 700px) {
   .scroll-hint {
-    bottom: 118px;
+    bottom: max(116px, calc(env(safe-area-inset-bottom) + 92px));
   }
 }
 
