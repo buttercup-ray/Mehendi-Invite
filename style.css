@@ -250,10 +250,29 @@ input {
 }
 
 .hero-fold {
-  height: calc(844 * var(--scale));
-  min-height: 690px;
-  max-height: 930px;
+  min-height: 100svh;
+  min-height: 100dvh;
+  height: 100svh;
+  height: 100dvh;
   background: #f5ddad;
+}
+
+.hero-fold::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: clamp(76px, 14vh, 130px);
+  background: linear-gradient(
+    180deg,
+    rgba(245, 221, 173, 0) 0%,
+    rgba(245, 221, 173, 0.18) 38%,
+    rgba(242, 234, 220, 0.82) 72%,
+    #f2eadc 100%
+  );
+  z-index: 2;
+  pointer-events: none;
 }
 
 .hero-bg,
@@ -278,6 +297,7 @@ input {
   position: absolute;
   top: calc(193 * var(--scale));
   left: 50%;
+  z-index: 3;
   display: flex;
   width: min(72%, 300px);
   transform: translateX(-50%);
@@ -331,24 +351,35 @@ input {
   font-size: clamp(32px, calc(36 * var(--scale)), 40px);
 }
 
-.scroll-cue {
+.scroll-hint {
   position: absolute;
   left: 50%;
-  bottom: max(calc(76 * var(--scale)), 64px);
-  z-index: 3;
+  bottom: 146px;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
   transform: translateX(-50%);
   color: rgba(255, 255, 255, 0.96);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-family: "CormorantCustom", serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
   text-align: center;
   text-shadow: 0 2px 10px rgba(46, 33, 18, 0.4);
-  animation: scrollCueFloat 1.8s ease-in-out infinite;
+  opacity: 0.92;
+  pointer-events: none;
 }
 
-.scroll-cue span {
-  display: block;
+.scroll-hint-arrow {
+  width: 10px;
+  height: 10px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  animation: scrollHintBounce 1.7s ease-in-out infinite;
 }
 
 .details-fold {
@@ -786,8 +817,15 @@ input {
 }
 
 @media (max-height: 700px) {
-  .scroll-cue {
-    bottom: 102px;
+  .scroll-hint {
+    bottom: 118px;
+  }
+}
+
+@media (min-width: 769px) {
+  .hero-fold {
+    min-height: 100dvh;
+    height: 100dvh;
   }
 }
 
@@ -859,15 +897,13 @@ input {
   }
 }
 
-@keyframes scrollCueFloat {
+@keyframes scrollHintBounce {
   0%,
   100% {
-    transform: translateX(-50%) translateY(0);
-    opacity: 0.72;
+    transform: translateY(0) rotate(45deg);
   }
 
   50% {
-    transform: translateX(-50%) translateY(4px);
-    opacity: 1;
+    transform: translateY(6px) rotate(45deg);
   }
 }
