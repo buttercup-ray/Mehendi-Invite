@@ -5,12 +5,10 @@ const flap = document.getElementById("flap");
 const scene = document.querySelector(".envelope-scene");
 const invite = document.getElementById("invite");
 const wrapper = document.getElementById("wrapper");
-const revealSections = Array.from(document.querySelectorAll(".fold, .gift-note"));
 
 let muted = false;
 let musicStarted = false;
-const defaultMusicVolume = 0.08;
-let revealObserver = null;
+const defaultMusicVolume = 0.064;
 let mutedByInactivity = false;
 let audioCtx = null;
 let musicSource = null;
@@ -71,50 +69,15 @@ const resetToTop = () => {
   document.body.scrollTop = 0;
 };
 
-const initializeSectionReveal = () => {
-  if (!revealSections.length) return;
-
-  revealSections.forEach((section, index) => {
-    section.classList.add("reveal-section");
-    section.classList.toggle("is-visible", index === 0);
-  });
-
-  if (!("IntersectionObserver" in window)) {
-    revealSections.forEach((section) => {
-      section.classList.add("is-visible");
-    });
-    return;
-  }
-
-  revealObserver?.disconnect();
-  revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-
-      entry.target.classList.add("is-visible");
-      revealObserver.unobserve(entry.target);
-    });
-  }, {
-    threshold: 0.2,
-    rootMargin: "0px 0px -12% 0px"
-  });
-
-  revealSections.slice(1).forEach((section) => {
-    revealObserver.observe(section);
-  });
-};
-
 window.addEventListener("load", () => {
   document.body.classList.add("envelope-locked");
   resetToTop();
   window.requestAnimationFrame(resetToTop);
-  initializeSectionReveal();
 });
 
 window.addEventListener("pageshow", () => {
   document.body.classList.add("envelope-locked");
   resetToTop();
-  initializeSectionReveal();
 });
 
 if (flap && scene && invite && wrapper) {

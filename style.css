@@ -241,20 +241,6 @@ input {
   width: 100%;
 }
 
-.reveal-section {
-  opacity: 0;
-  transform: translateY(32px);
-  transition:
-    opacity 0.75s ease,
-    transform 0.75s ease;
-  will-change: opacity, transform;
-}
-
-.reveal-section.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .hero-fold {
   height: calc(844 * var(--scale));
   min-height: 690px;
@@ -365,25 +351,28 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 9px;
   transform: translateX(-50%);
   color: rgba(255, 255, 255, 0.96);
   font-family: "CormorantCustom", serif;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 1;
+  white-space: nowrap;
   letter-spacing: 0;
   text-align: center;
-  text-shadow: 0 2px 10px rgba(46, 33, 18, 0.4);
-  opacity: 0.92;
+  text-shadow:
+    0 3px 14px rgba(46, 33, 18, 0.48),
+    0 0 18px rgba(255, 255, 255, 0.22);
+  opacity: 1;
   pointer-events: none;
 }
 
 .scroll-hint-arrow {
-  width: 10px;
-  height: 10px;
-  border-right: 1.5px solid currentColor;
-  border-bottom: 1.5px solid currentColor;
+  width: 15px;
+  height: 15px;
+  border-right: 2.5px solid currentColor;
+  border-bottom: 2.5px solid currentColor;
   transform: rotate(45deg);
   animation: scrollHintBounce 1.7s ease-in-out infinite;
 }
@@ -513,12 +502,9 @@ input {
 }
 
 .dress-card {
-  width: min(271px, 72%);
-  min-height: 260px;
+  width: min(271px, 78%);
   margin: 0 auto;
-  padding: 33px 12px 110px;
-  border-radius: 50px 50px 0 0;
-  background: var(--soft-pink);
+  padding: 18px 12px 72px;
   text-align: center;
 }
 
@@ -542,13 +528,16 @@ input {
 .dress-lines {
   display: grid;
   gap: 13px;
+  justify-items: center;
   font-size: 16px;
   font-style: italic;
   line-height: 1.18;
+  text-align: center;
 }
 
 .dress-lines p {
   margin: 0;
+  text-align: center;
 }
 
 .dress-lines strong,
@@ -561,68 +550,22 @@ input {
   z-index: 2;
   display: block;
   width: min(350px, 94%);
-  margin: -112px auto -10px;
+  margin: -76px auto -10px;
 }
 
-.gift-note {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 14px 18px;
-  background:
-    url("2nd-fold-bg.png") center center / cover no-repeat,
-    #fff;
-}
-
-.gift-note-card {
-  position: relative;
-  width: min(100%, 322px);
-  padding: 24px 18px 20px;
+.gift-note-inline {
+  position: absolute;
+  top: calc(238 * var(--scale));
+  left: 50%;
+  width: min(316px, 84%);
+  padding: 14px 18px 12px;
+  transform: translateX(-50%);
   border-radius: 18px;
-  background:
-    radial-gradient(circle at 18% 18%, rgba(255, 251, 240, 0.72), transparent 28%),
-    radial-gradient(circle at 82% 24%, rgba(214, 179, 128, 0.12), transparent 22%),
-    radial-gradient(circle at 50% 100%, rgba(184, 145, 91, 0.12), transparent 34%),
-    linear-gradient(180deg, rgba(244, 230, 204, 0.98) 0%, rgba(234, 216, 185, 0.98) 100%);
+  background: rgba(255, 250, 241, 0.72);
   box-shadow:
-    inset 0 1px 0 rgba(255, 250, 239, 0.88),
-    inset 0 -10px 24px rgba(181, 147, 95, 0.08);
+    inset 0 1px 0 rgba(255, 255, 255, 0.68),
+    0 8px 20px rgba(107, 87, 51, 0.08);
   text-align: center;
-  transform: translateY(-24px);
-}
-
-.gift-note-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background:
-    repeating-linear-gradient(
-      115deg,
-      rgba(255, 255, 255, 0.045) 0 2px,
-      rgba(176, 139, 86, 0.035) 2px 4px,
-      transparent 4px 8px
-    );
-  opacity: 0.4;
-  pointer-events: none;
-}
-
-.gift-flower {
-  position: absolute;
-  top: 50%;
-  width: clamp(38px, calc(44 * var(--scale)), 50px);
-  height: auto;
-  transform: translateY(-50%);
-  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.16));
-}
-
-.gift-flower-left {
-  left: clamp(-14px, calc(-18 * var(--scale)), -10px);
-}
-
-.gift-flower-right {
-  right: clamp(-14px, calc(-18 * var(--scale)), -10px);
 }
 
 .gift-note-copy,
@@ -632,14 +575,14 @@ input {
 
 .gift-note-copy {
   display: grid;
-  gap: 4px;
-  max-width: 252px;
+  gap: 2px;
+  max-width: 278px;
   margin: 0 auto 12px;
   color: #3d3d3d;
-  font-size: clamp(15px, calc(16 * var(--scale)), 18px);
+  font-size: clamp(13px, calc(14 * var(--scale)), 15px);
   font-style: italic;
   font-weight: 500;
-  line-height: 1.12;
+  line-height: 1.2;
 }
 
 .gift-note-copy span {
@@ -648,10 +591,10 @@ input {
 
 .gift-note-highlight {
   color: #3d3d3d;
-  font-size: clamp(18px, calc(20 * var(--scale)), 24px);
+  font-size: clamp(15px, calc(16 * var(--scale)), 18px);
   font-style: italic;
-  font-weight: 700;
-  line-height: 1.1;
+  font-weight: 600;
+  line-height: 1.08;
   white-space: nowrap;
 }
 
@@ -689,7 +632,7 @@ input {
 
 .committee-copy {
   position: absolute;
-  top: calc(250 * var(--scale));
+  top: calc(376 * var(--scale));
   left: 50%;
   width: min(346px, 90%);
   transform: translateX(-50%);
@@ -697,18 +640,22 @@ input {
 }
 
 .committee-copy p {
-  width: 234px;
+  width: 284px;
   margin: 0 auto 8px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
-  line-height: 1.22;
+  line-height: 1.24;
+}
+
+.committee-copy p span {
+  display: block;
 }
 
 .committee-copy strong {
   display: block;
   font-family: "CormorantInfantCustom", serif;
-  font-size: 21.5px;
-  line-height: 1.12;
+  font-size: 24.5px;
+  line-height: 1.14;
 }
 
 .nowrap {
@@ -717,7 +664,7 @@ input {
 
 .rsvp-form {
   position: absolute;
-  top: calc(401 * var(--scale));
+  top: calc(524 * var(--scale));
   left: 50%;
   display: flex;
   width: min(308px, 79%);
@@ -811,7 +758,7 @@ input {
 
 .thankyou {
   position: absolute;
-  top: calc(785 * var(--scale));
+  top: calc(820 * var(--scale));
   left: 50%;
   width: 270px;
   margin: 0;
@@ -889,13 +836,6 @@ input {
   .envelope-flap.open,
   .open-note {
     animation: none;
-  }
-
-  .reveal-section,
-  .reveal-section.is-visible {
-    opacity: 1;
-    transform: none;
-    transition: none;
   }
 }
 
