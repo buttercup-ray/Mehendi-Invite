@@ -555,7 +555,7 @@ input {
 
 .gift-note-inline {
   position: absolute;
-  top: calc(238 * var(--scale));
+  top: calc(382 * var(--scale));
   left: 50%;
   width: min(316px, 84%);
   padding: 14px 18px 12px;
@@ -632,7 +632,7 @@ input {
 
 .committee-copy {
   position: absolute;
-  top: calc(376 * var(--scale));
+  top: calc(244 * var(--scale));
   left: 50%;
   width: min(346px, 90%);
   transform: translateX(-50%);
