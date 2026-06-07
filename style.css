@@ -772,6 +772,32 @@ input {
   text-align: center;
 }
 
+.site-footer {
+  width: var(--page-width);
+  margin: 0 auto;
+  padding: 18px 16px calc(env(safe-area-inset-bottom) + 24px);
+  text-align: center;
+}
+
+.invite-credit {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.invite-credit {
+  color: rgba(0, 0, 0, 0.48);
+  text-decoration: none;
+}
+
+.invite-credit:hover,
+.invite-credit:focus-visible {
+  color: var(--pink);
+  text-decoration: underline;
+}
+
 .rsvp-bottom {
   bottom: 0;
   height: calc(222 * var(--scale));
